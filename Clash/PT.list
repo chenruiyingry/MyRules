@@ -1,4 +1,4 @@
-DOMAIN,tracker.carpt.net
-DOMAIN,connects.icu
-DOMAIN,hdpt.xyz
-DOMAIN,nextpt.net
+DOMAIN-SUFFIX,tracker.carpt.net
+DOMAIN-SUFFIX,connects.icu
+DOMAIN-SUFFIX,hdpt.xyz
+DOMAIN-SUFFIX,nextpt.net
