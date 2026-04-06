@@ -6,7 +6,7 @@ log-level: info
 external-controller: 127.0.0.1:9090
 proxies:
   - name: ⚡️上游
-    type: http
+    type: socks5
     server: 192.168.14.8
     port: 7892
 proxy-groups:
