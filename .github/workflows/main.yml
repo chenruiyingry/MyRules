@@ -1,0 +1,35 @@
+name: Upstream Sync
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: upstream-sync-master
+  cancel-in-progress: false
+
+jobs:
+  sync_latest_from_upstream:
+    name: Sync latest commits from upstream repo
+    runs-on: ubuntu-latest
+    if: ${{ github.event.repository.fork }}
+
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v4
+        with:
+          ref: rm
+          fetch-depth: 0
+
+      - name: Sync upstream master into fork master
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.3
+        with:
+          upstream_sync_repo: ACL4SSR/ACL4SSR
+          upstream_sync_branch: master
+          target_sync_branch: master
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          test_mode: false
